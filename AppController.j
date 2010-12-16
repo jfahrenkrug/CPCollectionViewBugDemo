@@ -42,6 +42,7 @@
 
     detailList = [[MyListView alloc] initWithFrame:CGRectMake(0.0, 0.0, 226.0, 200.0)];
     [detailList setContent:detailArray[0]];
+    [detailList setDelegate:self];
 
     var detailScrollView = [[CPScrollView alloc] initWithFrame:CGRectMake(260.0, 65.0, 243.0, 300.0)];
     [detailScrollView setDocumentView:detailList];
@@ -61,7 +62,7 @@
     [descView setFont:[CPFont systemFontOfSize:12.0]];
     [descView setEditable:NO];
     [descView setLineBreakMode:CPLineBreakByWordWrapping];
-    [descView setStringValue:@"Steps to reproduce: Click on Memes, click 'Add one', click on Conferences, click on Memes again. Both Keyboard Cat and New Detail will be selected"];
+    [descView setStringValue:@"Steps to reproduce: Watch the console. Click on Conferences: 'detail selection changed' appears. Click on Memes, Cities, Conferences and so forth: nothing happens. The delegate is never called again."]; 
         
     [contentView addSubview:descView];
 
@@ -74,9 +75,15 @@
 
 - (void)collectionViewDidChangeSelection:(CPCollectionView)aCollectionView
 {
-    var index = [[masterList selectionIndexes] firstIndex];
-    [detailList setContent:detailArray[index]];
-    [detailList setSelectionIndexes:[CPIndexSet indexSetWithIndex:0]];
+    if (aCollectionView === masterList) {
+        var index = [[masterList selectionIndexes] firstIndex];
+        [detailList setContent:detailArray[index]];
+        [detailList setSelectionIndexes:[CPIndexSet indexSetWithIndex:0]];
+    }
+
+    if (aCollectionView === detailList) {
+        console.log("Detail selection changed!");
+    }
 }
 
 - (void)addDetail

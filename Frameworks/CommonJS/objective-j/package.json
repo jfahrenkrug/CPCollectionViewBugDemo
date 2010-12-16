@@ -1,0 +1,28 @@
+{
+    "name": "objective-j",
+    "dependencies": [
+        "narwhal",
+        "browserjs",
+        "jake"
+    ],
+    "preload": [
+        "objective-j/loader"
+    ],
+    "description": "Objective-J and Cappuccino module",
+    "keywords": [
+        "objective-j",
+        "objj",
+        "objective j",
+        "cappuccino"
+    ],
+    "author": "280 North, Inc. (http://280north.com/)",
+    "contributors": [
+        "Francisco Tolmasky (http://tolmasky.com/)",
+        "Ross Boucher (http://rossboucher.com/)",
+        "Tom Robinson (http://tlrobinson.net/)",
+        "Numerous others (http://contributors.cappuccino.org/)"
+    ],
+    "cappuccino-revision": "128a3ac4d97d33c94841e73284a85b4a800e432a",
+    "cappuccino-timestamp": 1292496835044,
+    "version": "0.8.1"
+}
